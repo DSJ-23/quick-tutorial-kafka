@@ -1,0 +1,18 @@
+written in java/scala but you don't have to know it to use it
+each cluster has a producer/consumer ... I assume this is similar to pub/sub (if not analogous)
+
+
+kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic first_kafka_topic
+kafka-topics.sh --list --zookeeper zookeeper:2181
+kafka-topics.sh --delete --zookeeper zookeeper:2181 --topic first_kafka_topic
+kafka-topics.sh --delete --zookeeper zookeeper:2181 --topic dummy_topic
+
+kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic dummy_topic
+kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic messages
+
+kafka-console-producer.sh --broker-list kafka:9092 --topic messages
+
+
+kafka-console-producer.sh --broker-list kafka:9092 --topic messages
+
+kafka-console-consumer.sh --bootstrap-server kafka:9092 --topic messages
